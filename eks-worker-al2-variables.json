@@ -16,7 +16,7 @@
     "creator": "{{env `USER`}}",
     "docker_version": "20.10.17-1.amzn2.0.1",
     "encrypted": "false",
-    "kernel_version": "",
+    "kernel_version": "5.10",
     "kms_key_id": "",
     "launch_block_device_mappings_volume_size": "8",
     "pause_container_version": "3.5",    
@@ -30,7 +30,7 @@
     "source_ami_owners": "137112412989",
     "ssh_interface": "",
     "ssh_username": "ec2-user",
-    "subnet_id": "",
-    "temporary_security_group_source_cidrs": "",
-    "volume_type": "gp3"
+    "subnet_id": "subnet-061fd55369909b950",
+    "volume_type": "gp3",
+    "temporary_security_group_source_cidrs": "10.102.8.0/21"
 }
