@@ -142,6 +142,11 @@
       "type": "shell",
       "pause_before": "90s",
       "remote_folder": "{{ user `remote_folder`}}",
+      "script": "{{template_dir}}/scripts/install_falco.sh",
+    },
+    {
+      "type": "shell",
+      "remote_folder": "{{ user `remote_folder`}}",
       "inline": [
         "mkdir -p /tmp/worker/log-collector-script/"
       ]

@@ -44,3 +44,16 @@ else
   echo "Kernel does not match expected version."
   exit 1
 fi
+
+cmdline=$(cat /proc/cmdline)
+echo "Verifying if psi kernel cmdline arg is set"
+
+if [[ $cmdline =~ "psi=1" ]]; then
+  echo "psi is set"
+else
+  echo "psi is not set"
+  exit 1
+fi
+
+echo "Verifying is falco driver is loaded"
+sudo lsmod | grep -i falco
