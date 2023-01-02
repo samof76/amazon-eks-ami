@@ -136,7 +136,7 @@
       "pause_before": "90s",
       "remote_folder": "{{ user `remote_folder`}}",
       "expect_disconnect": true,
-      "script": "{{template_dir}}/scripts/add_psi.sh",
+      "script": "{{template_dir}}/scripts/add_psi.sh"
     },
     {
       "type": "shell",
