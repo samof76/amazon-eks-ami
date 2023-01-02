@@ -9,7 +9,7 @@
     "aws_secret_access_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
     "aws_session_token": "{{env `AWS_SESSION_TOKEN`}}",
     "binary_bucket_name": "amazon-eks",
-    "binary_bucket_region": "us-east-1",
+    "binary_bucket_region": "us-west-2",
     "cache_container_images": "false",    
     "cni_plugin_version": "v0.8.6",
     "containerd_version": "1.6.6-1.amzn2.0.2",
