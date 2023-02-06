@@ -142,7 +142,7 @@
       "type": "shell",
       "pause_before": "90s",
       "remote_folder": "{{ user `remote_folder`}}",
-      "script": "{{template_dir}}/scripts/install_falco.sh",
+      "script": "{{template_dir}}/scripts/install_falco.sh"
     },
     {
       "type": "shell",
