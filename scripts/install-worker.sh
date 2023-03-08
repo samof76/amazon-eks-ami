@@ -49,13 +49,6 @@ else
 fi
 
 ################################################################################
-### Utilities ##################################################################
-################################################################################
-
-sudo chmod -R a+x $TEMPLATE_DIR/bin/
-sudo mv $TEMPLATE_DIR/bin/* /usr/bin/
-
-################################################################################
 ### Packages ###################################################################
 ################################################################################
 
@@ -75,11 +68,13 @@ sudo yum install -y \
   socat \
   unzip \
   wget \
-  yum-plugin-versionlock \
-  yum-utils
+  yum-utils \
+  yum-plugin-versionlock
 
 # Remove any old kernel versions. `--count=1` here means "only leave 1 kernel version installed"
 sudo package-cleanup --oldkernels --count=1 -y
+
+sudo yum versionlock kernel-$(uname -r)
 
 # Remove the ec2-net-utils package, if it's installed. This package interferes with the route setup on the instance.
 if yum list installed | grep ec2-net-utils; then sudo yum remove ec2-net-utils -y -q; fi
@@ -135,7 +130,7 @@ if [[ "$BINARY_BUCKET_REGION" != "us-iso-east-1" && "$BINARY_BUCKET_REGION" != "
     --retry-delay 1 \
     -L "https://awscli.amazonaws.com/awscli-exe-linux-${MACHINE}.zip" -o "${AWSCLI_DIR}/awscliv2.zip"
   unzip -q "${AWSCLI_DIR}/awscliv2.zip" -d ${AWSCLI_DIR}
-  sudo "${AWSCLI_DIR}/aws/install" --bin-dir /bin/
+  sudo "${AWSCLI_DIR}/aws/install" --bin-dir /bin/ --update
 else
   echo "Installing awscli package"
   sudo yum install -y awscli
