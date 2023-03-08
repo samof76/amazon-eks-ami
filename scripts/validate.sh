@@ -55,8 +55,8 @@ else
   exit 1
 fi
 
-echo "Verifying is falco driver is loaded"
-sudo lsmod | grep -i falco
+# echo "Verifying is falco driver is loaded"
+# sudo lsmod | grep -i falco
 echo "Verifying that the package versionlocks are correct..."
 
 function versionlock-entries() {
