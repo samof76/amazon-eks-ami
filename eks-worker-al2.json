@@ -221,6 +221,11 @@
     {
       "type": "shell",
       "remote_folder": "{{ user `remote_folder`}}",
+      "script": "{{template_dir}}/scripts/disable_auto_upgrade.sh"
+    },
+    {
+      "type": "shell",
+      "remote_folder": "{{ user `remote_folder`}}",
       "script": "{{template_dir}}/scripts/generate-version-info.sh",
       "execute_command": "chmod +x {{ .Path }}; {{ .Path }} /tmp/version-info.json"
     },
