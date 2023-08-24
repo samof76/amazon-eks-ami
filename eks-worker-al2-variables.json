@@ -23,7 +23,7 @@
     "pause_container_version": "3.5",
     "pull_cni_from_github": "true",
     "remote_folder": "/tmp",
-    "runc_version": "1.1.5-1.amzn2",
+    "runc_version": "1.1.*",
     "security_group_id": "",
     "source_ami_filter_name": "amzn2-ami-minimal-hvm-*",
     "source_ami_id": "",
@@ -33,5 +33,6 @@
     "subnet_id": "subnet-061fd55369909b950",
     "volume_type": "gp3",
     "temporary_security_group_source_cidrs": "10.102.8.0/21",
+    "ssm_agent_version": "latest",
     "working_dir": "{{user `remote_folder`}}/worker"
 }
