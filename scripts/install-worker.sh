@@ -506,6 +506,9 @@ EOF
 echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
 echo fs.inotify.max_user_instances=8192 | sudo tee -a /etc/sysctl.conf
 echo vm.max_map_count=524288 | sudo tee -a /etc/sysctl.conf
+echo net.netfilter.nf_conntrack_tcp_timeout_time_wait=65 | sudo tee -a /etc/sysctl.conf
+echo net.core.somaxconn=65535 | sudo tee -a /etc/sysctl.conf
+echo "@reboot /bin/bash -l -c '/sbin/modprobe nf_conntrack; /usr/sbin/sysctl -p'" | sudo crontab -
 
 ################################################################################
 ### adding log-collector-script ################################################

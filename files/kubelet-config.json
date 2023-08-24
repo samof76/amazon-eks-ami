@@ -33,5 +33,32 @@
   "protectKernelDefaults": true,
   "serializeImagePulls": false,
   "serverTLSBootstrap": true,
-  "tlsCipherSuites": ["TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305", "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256"]
+  "tlsCipherSuites": [
+    "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
+    "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+    "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305",
+    "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+    "TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305",
+    "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+    "TLS_RSA_WITH_AES_256_GCM_SHA384",
+    "TLS_RSA_WITH_AES_128_GCM_SHA256"
+  ],
+  "kubeAPIBurst": 50,
+  "kubeAPIQPS": 50,
+  "eventRecordQPS": 50,
+  "eventBurst": 50,
+  "registryPullQPS": 100,
+  "registryBurst": 100,
+  "runtimeRequestTimeout": "15s",
+  "allowedUnsafeSysctls": [
+    "net.core.somaxconn",
+    "net.ipv4.tcp_keepalive_*",
+    "net.core.rmem_max",
+    "net.core.wmem_max",
+    "net.core.rmem_default",
+    "net.core.wmem_default",
+    "net.core.optmem_max",
+    "net.ipv4.tcp_rmem",
+    "net.ipv4.tcp_wmem"
+  ]
 }
