@@ -59,5 +59,7 @@
     "net.core.optmem_max",
     "net.ipv4.tcp_rmem",
     "net.ipv4.tcp_wmem"
-  ]
+  ],
+  "imageGCHighThresholdPercent": 70,
+  "imageGCLowThresholdPercent": 50
 }
