@@ -1,13 +1,9 @@
 #!/usr/bin/env bash
-#
-# Do basic validation of the generated AMI
 
-# Validates that a file or blob doesn't exist
-#
-# Arguments:
-#   a file name or blob
-# Returns:
-#   1 if a file exists, after printing an error
+set -o nounset
+set -o errexit
+set -o pipefail
+
 validate_file_nonexists() {
   local file_blob=$1
   for f in $file_blob; do
@@ -44,6 +40,20 @@ else
   echo "Kernel does not match expected version!"
   exit 1
 fi
+
+cmdline=$(cat /proc/cmdline)
+echo "Verifying if psi kernel cmdline arg is set"
+
+if [[ $cmdline =~ "psi=1" ]]; then
+  echo "psi is set"
+else
+  echo "psi is not set"
+  exit 1
+fi
+
+# echo "Verifying is falco driver is loaded"
+# sudo lsmod | grep -i falco
+echo "Verifying that the package versionlocks are correct..."
 
 function versionlock-entries() {
   # the format of this output is EPOCH:NAME-VERSION-RELEASE.ARCH
@@ -90,3 +100,14 @@ for ENTRY in "${REQUIRED_COMMANDS[@]}"; do
 done
 
 echo "Required commands were found: ${REQUIRED_COMMANDS[*]}"
+
+REQUIRED_FREE_MEBIBYTES=1024
+TOTAL_MEBIBYTES=$(df -m / | tail -n1 | awk '{print $2}')
+FREE_MEBIBYTES=$(df -m / | tail -n1 | awk '{print $4}')
+echo "Disk space in mebibytes (required/free/total): ${REQUIRED_FREE_MEBIBYTES}/${FREE_MEBIBYTES}/${TOTAL_MEBIBYTES}"
+if [ ${FREE_MEBIBYTES} -lt ${REQUIRED_FREE_MEBIBYTES} ]; then
+  echo "Disk space requirements not met!"
+  exit 1
+else
+  echo "Disk space requirements were met."
+fi
